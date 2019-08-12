@@ -9,7 +9,7 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-name="Aika">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -25,6 +25,18 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root{
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 10px;
+
+  }
+
+  img{
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+  }
 
     body {
       text-align: center;
@@ -42,9 +54,31 @@
     input {
       width: 100px;
     }
+
+   
   </style>
+  
 
   <script>
+
+    const inputs=document.querySelectorAll('.controls input');
+
+    function handleUpdate(){
+      console.log(" value of input "+ this.value);
+      console.log("data set "+ this.dataset);
+      const suffix = this.dataset.sizing || '';
+      console.log(suffix);
+      console.log(this.name);
+
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+     /** const aika =this.dataset.name;
+      console.log(aika);
+      */
+    }
+
+    inputs.forEach(input=>input.addEventListener('change', handleUpdate));
+    inputs.forEach(input=>input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
