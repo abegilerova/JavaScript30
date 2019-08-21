@@ -49,6 +49,8 @@ const scrubTime=(e.offsetX/progress.offsetWidth)*video.duration;
 video.currentTime=scrubTime;
 }
 
+
+//will only work for chrome
 function makeFullScreen(){
     video.webkitRequestFullscreen();
 }
