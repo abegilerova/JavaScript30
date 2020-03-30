@@ -109,7 +109,10 @@
 
   function handlecheck(event){
   console.log(event);
-  
+  console.log("print");
+  console.log(this);
+  console.log( typeof this);
+
   let inBetween=false;
   if(event.shiftKey && this.checked){
     
@@ -134,6 +137,9 @@ if (inBetween){
   }
 
   lastChecked = this;
+
+  
+  
 }
 
 checkBoxes.forEach(item=>item.addEventListener('click', handlecheck));
